@@ -3,6 +3,29 @@ from .models import Catalog
 from django.urls import reverse
 from django.urls.base import resolve
 from .views import home
+from .forms import AddBookForm
+
+
+class CatalogFormTests(SimpleTestCase):
+    """    Тесты для форм    """
+    def setUp(self):
+        url = reverse('home')
+        self.response = self.client.get(url)
+
+    def test_book_form(self):
+        form = self.response.context.get('add_book_form')
+        self.assertIsInstance(form, AddBookForm)
+        self.assertContains(self.response, 'csrfmiddlewaretoken')
+
+    def test_bootstrap_class_used_for_default_styling(self):
+        form = self.response.context.get('add_book_form')
+        self.assertIn('class="form-control"', form.as_p())
+
+    def test_book_form_validation_for_blank_items(self):
+        add_book_form = AddBookForm(
+            data={'title': '', 'ISBN': '', 'author': '', 'price': '', 'availability': ''}
+        )
+        self.assertFalse(add_book_form.is_valid())
 
 
 class ElibraryURLsTest(SimpleTestCase):
@@ -14,7 +37,7 @@ class ElibraryURLsTest(SimpleTestCase):
 
     def test_root_url_resloves_to_homepage_view(self):
         found = resolve('/')
-        self.assertEqual(found.func, home)
+        self.assertEquals(found.func, home)
 
 
 class CatalogModelTests(TestCase):
@@ -33,7 +56,7 @@ class CatalogModelTests(TestCase):
         self.assertIsInstance(self.book, Catalog)
 
     def test_str_representation(self):
-        self.assertEqual(str(self.book), "First Django Book")
+        self.assertEquals(str(self.book), "First Django Book")
 
     def test_saving_and_retrieving_book(self):
         first_book = Catalog()
