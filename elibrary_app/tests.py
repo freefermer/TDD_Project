@@ -9,7 +9,7 @@ from .forms import AddBookForm
 class CatalogViewTests(TestCase):
     """    Тест для представлений    """
     def test_book_list_view(self):
-
+        """ Тестовый метод, позволяющий показать, что созданные нами книги корректно отображаются в нашем шаблоне. """
         Book_1 = Catalog.objects.create(
             title='Django for Beginners (2018)',
             ISBN='978-1-60309-0',
