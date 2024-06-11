@@ -14,7 +14,7 @@
             {% include "partial_create_book_form.html" %}
 
             <!-- Таблица книг -->
-
+            <form>
             <table>
                 <thead>
                 <tr>
@@ -71,6 +71,7 @@
                 </tbody>
 
             </table>
+            </form>
         </div>
     </div>
 </div>
@@ -87,6 +88,14 @@
             path_str = event.detail.pathInfo.requestPath;
             if(path_str.includes('create_book')){
                 cngElementsAtr('clrtxt', 'value', '');
+            }else if(path_str.includes('update_book_details')){
+                if(event.detail.requestConfig.verb === 'get'){
+                    cngElementsAtr('disbtn', 'disabled', true);
+                }else{
+                    cngElementsAtr('disbtn', 'disabled', false);
+                }
+            }else if(path_str.includes('book_detail')){
+                cngElementsAtr('disbtn', 'disabled', false);
             }
         });
     </script>
