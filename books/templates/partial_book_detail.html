@@ -1,4 +1,4 @@
-<tr>
+<tr class="{% if book.read %}grey-text{% endif %}">
     <!-- Ячейка номера книги -->
     <td>
         {{ book.id }}
@@ -23,7 +23,7 @@
     <td>
         {% if not book.read %}
         <!-- Кнопка "Unread" -->
-        <button class="disbtn"
+        <button class="disbtn table-button status-button"
                 hx-patch="{% url 'update_book_status' book.id %}"
                 hx-target="closest tr"
                 hx-swap="outerHTML" >
@@ -31,7 +31,7 @@
         </button>
         {% else %}
         <!-- Кнопка "Read" -->
-        <button class="disbtn"
+        <button class="disbtn table-button status-button"
                 hx-patch="{% url 'update_book_status' book.id %}"
                 hx-target="closest tr"
                 hx-swap="outerHTML" >
@@ -43,7 +43,7 @@
     <!--  Ячейка кнопок действия -->
     <td>
         <!-- Кнопка "Edit" -->
-        <button class="disbtn"
+        <button class="disbtn table-button any-button"
                 hx-get="{% url 'update_book_details' book.id %}"
                 hx-target="closest tr"
                 hx-swap="outerHTML" >
@@ -51,7 +51,7 @@
         </button>
 
         <!-- Кнопка "Delete" -->
-        <button class="disbtn"
+        <button class="disbtn table-button any-button"
                 hx-delete="{% url 'delete_book' book.id %}"
                 hx-target="closest tr"
                 hx-swap="outerHTML"

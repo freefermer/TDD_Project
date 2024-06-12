@@ -1,54 +1,55 @@
-                    <tr>
-                        <!-- Ячейка номера книги -->
-                        <td>
-                            {{ book.id }}
-                        </td>
+<tr class="{% if book.read %}grey-text{% endif %}">
+    <!-- Ячейка номера книги -->
+    <td>
+        {{ book.id }}
+    </td>
 
-                        <!-- Ячейка названия книги -->
-                        <td>
-                            {{ form.title }}
-                        </td>
+    <!-- Ячейка названия книги -->
+    <td>
+        {{ form.title }}
+    </td>
 
-                        <!-- Ячейка автора книги -->
-                        <td>
-                            {{ form.author }}
-                        </td>
+    <!-- Ячейка автора книги -->
+    <td>
+        {{ form.author }}
+    </td>
 
-                        <!-- Ячейка цены книги -->
-                        <td>
-                            {{ form.price }}
-                        </td>
+    <!-- Ячейка цены книги -->
+    <td>
+        {{ form.price }}
+    </td>
 
-                        <!-- Ячейка состояния -->
-                        <td>
-                            {% if not book.read %}
-                                <!-- Кнопка "Unread" -->
-                                <button disabled>
-                                    Unread
-                                </button>
-                            {% else %}
-                                <!-- Кнопка "Read" -->
-                                <button disabled>
-                                    Read
-                                </button>
-                            {% endif %}
-                        </td>
+    <!-- Ячейка состояния -->
+    <td>
+        {% if not book.read %}
+            <!-- Кнопка "Unread" -->
+            <button class="table-button status-button" disabled>
+                Unread
+            </button>
+        {% else %}
+            <!-- Кнопка "Read" -->
+            <button class="table-button status-button" disabled>
+                Read
+            </button>
+        {% endif %}
+    </td>
 
-                        <!--  Ячейка кнопок действия -->
-                        <td>
-                            <!-- Кнопка "Save" -->
-                            <button type="submit"
-                                    hx-post="{% url 'update_book_details' book.id %}"
-                                    hx-target="closest tr"
-                                    hx-swap="outerHTML"
-                                    hx-include="closest tr" >
-                                Save
-                            </button>
-                            <!-- Кнопка "Cancel" -->
-                            <button hx-get="{% url 'book_detail' book.id %}"
-                                    hx-target="closest tr"
-                                    hx-swap="outerHTML" >
-                                Cancel
-                            </button>
-                        </td>
-                    </tr>
+    <!--  Ячейка кнопок действия -->
+    <td>
+        <!-- Кнопка "Save" -->
+        <button type="submit"
+            class="table-button any-button"
+                hx-post="{% url 'update_book_details' book.id %}"
+                hx-target="closest tr"
+                hx-swap="outerHTML"
+                hx-include="closest tr" >
+            Save
+        </button>
+        <!-- Кнопка "Cancel" -->
+        <button class="table-button any-button"
+                hx-target="closest tr"
+                hx-swap="outerHTML" >
+            Cancel
+        </button>
+    </td>
+</tr>
