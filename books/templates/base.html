@@ -23,7 +23,19 @@
                     <!-- Заголовок номера книги -->
                     <th scope="col" style="width: 10%">
                         <small>
-                            Num.
+                            No.
+                            <a href=""
+                               hx-get="{% url 'book_list_sort' filter='id' direction='descend' %}"
+                               hx-target="#book-list"
+                               hx-swap="innerHTML">
+                                ⇓
+                            </a>
+                            <a href=""
+                               hx-get="{% url 'book_list_sort' filter='id' direction='ascend' %}"
+                               hx-target="#book-list"
+                               hx-swap="innerHTML">
+                                ⇑
+                            </a>
                         </small>
                     </th>
 
@@ -31,6 +43,18 @@
                     <th scope="col" style="width: 26%">
                         <small>
                             Title
+                            <a href=""
+                               hx-get="{% url 'book_list_sort' filter='title' direction='descend' %}"
+                               hx-target="#book-list"
+                               hx-swap="innerHTML">
+                                ⇓
+                            </a>
+                            <a href=""
+                               hx-get="{% url 'book_list_sort' filter='title' direction='ascend' %}"
+                               hx-target="#book-list"
+                               hx-swap="innerHTML">
+                                ⇑
+                            </a>
                         </small>
                     </th>
 
@@ -38,6 +62,18 @@
                     <th scope="col" style="width: 26%">
                         <small>
                             Author
+                            <a href=""
+                               hx-get="{% url 'book_list_sort' filter='author' direction='descend' %}"
+                               hx-target="#book-list"
+                               hx-swap="innerHTML">
+                                ⇓
+                            </a>
+                            <a href=""
+                               hx-get="{% url 'book_list_sort' filter='author' direction='ascend' %}"
+                               hx-target="#book-list"
+                               hx-swap="innerHTML">
+                                ⇑
+                            </a>
                         </small>
                     </th>
 
@@ -45,6 +81,18 @@
                     <th scope="col" style="width: 11%">
                         <small>
                             Price ($)
+                            <a href=""
+                               hx-get="{% url 'book_list_sort' filter='price' direction='descend' %}"
+                               hx-target="#book-list"
+                               hx-swap="innerHTML">
+                                ⇓
+                            </a>
+                            <a href=""
+                               hx-get="{% url 'book_list_sort' filter='price' direction='ascend' %}"
+                               hx-target="#book-list"
+                               hx-swap="innerHTML">
+                                ⇑
+                            </a>
                         </small>
                     </th>
 
@@ -52,6 +100,18 @@
                     <th scope="col" style="width: 11%">
                         <small>
                             Status
+                            <a href=""
+                               hx-get="{% url 'book_list_sort' filter='read' direction='descend' %}"
+                               hx-target="#book-list"
+                               hx-swap="innerHTML">
+                                ⇓
+                            </a>
+                            <a href=""
+                               hx-get="{% url 'book_list_sort' filter='read' direction='ascend' %}"
+                               hx-target="#book-list"
+                               hx-swap="innerHTML">
+                                ⇑
+                            </a>
                         </small>
                     </th>
 
