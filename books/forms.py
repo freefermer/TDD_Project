@@ -14,5 +14,5 @@ class BookCreateForm(ModelForm):
 
 class BookEditForm(BookCreateForm):
     title = CharField(required=False, widget=TextInput(attrs={"class":"form-control-sm"}))
-    autho = CharField(required=False, widget=TextInput(attrs={"class":"form-control-sm"}))
+    author = CharField(required=False, widget=TextInput(attrs={"class":"form-control-sm"}))
     price = CharField(required=False, widget=TextInput(attrs={"class":"form-control-sm"}))
